@@ -1,5 +1,5 @@
 import React from "react"
-import { BannerContainer, Img, ItemContainer, ItemsContainer } from "./style"
+import { BannerContainer, Img, ItemContainer, Wrapper } from "./style"
 const bannerItems = [
   {
     title: "Sony WH-1000XM4 Wireless Industry...",
@@ -34,14 +34,16 @@ export const Banner = () => {
         src="https://scontent.xx.fbcdn.net/v/t1.15752-9/277409559_346506950843245_3683662310621238007_n.png?_nc_cat=107&ccb=1-5&_nc_sid=aee45a&_nc_ohc=GX0U_tAUXQUAX-hN51j&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVJdlALEiolm_eufrPR71Gg30BQNLuxcdV167oKkGEk23w&oe=627C4CC4"
         alt="asd"
       />
-      <ItemsContainer>
+      <Wrapper>
         {bannerItems.map((item, index) => (
           <ItemContainer key={index}>
-            <img
-              className="w-[150px]   lg:w-[244px] lg:h-[200px] h-[150px] mx-auto  rounded-[10px]"
-              src={item.image}
-              alt="image-picture"
-            />
+            <div className="aspect-w-1 relative w-full aspect-h-1 ">
+              <img
+                className="w-full object-cover  rounded-[10px]"
+                src={item.image}
+                alt="image-picture"
+              />
+            </div>
             <li className="list-none text-[12px] lg:text-sm">{item.title}</li>
             <span className="flex gap-2 items-center text-[14px]">
               {item.price}
@@ -53,7 +55,7 @@ export const Banner = () => {
             </span>
           </ItemContainer>
         ))}
-      </ItemsContainer>
+      </Wrapper>
     </BannerContainer>
   )
 }

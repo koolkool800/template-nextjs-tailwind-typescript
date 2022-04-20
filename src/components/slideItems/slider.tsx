@@ -8,6 +8,7 @@ import { ListStars } from "../stars"
 import { Next, Prev } from "../../assets/svg/Icons"
 import { render } from "@headlessui/react/dist/utils/render"
 import { Img, ItemContainer, Title } from "./style"
+
 export default function SimpleSlider() {
   const FeaturedItems: ISlideITrems[] = [
     {
@@ -60,11 +61,13 @@ export default function SimpleSlider() {
     return (
       <div
         className={className}
-        style={{ ...style, display: "none" }}
+        style={{
+          ...style,
+          position: "absolute",
+          zIndex: 1,
+        }}
         onClick={onClick}
-      >
-        <Next />
-      </div>
+      ></div>
     )
   }
 
@@ -73,11 +76,11 @@ export default function SimpleSlider() {
     return (
       <div
         className={className}
-        style={{ ...style, display: "none" }}
+        style={{
+          ...style,
+        }}
         onClick={onClick}
-      >
-        <Prev />
-      </div>
+      ></div>
     )
   }
   const sliderSettings = {
@@ -93,7 +96,7 @@ export default function SimpleSlider() {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
+    nextArrow: <SampleNextArrow className="" />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
@@ -133,9 +136,9 @@ export default function SimpleSlider() {
   }
   return (
     <div className="relative py-10 p-4">
-      <Slider ref={sliderRef} className="py-2 " {...sliderSettings}>
+      <Slider ref={sliderRef} className="py-4 " {...sliderSettings}>
         {FeaturedItems.map(({ image, title, stars, price }, index) => (
-          <ItemContainer>
+          <ItemContainer key={index}>
             <Img src={image} alt="slide-image" />
             <Title>{title}</Title>
             <span className="flex">

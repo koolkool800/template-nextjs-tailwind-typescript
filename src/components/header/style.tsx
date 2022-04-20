@@ -2,7 +2,7 @@ import styled from "styled-components"
 import tw from "twin.macro"
 
 export const Nav = styled.nav`
-  ${tw`bg-custom-primaryColor h-20 max-w-[1300px] mx-auto   flex justify-between items-center`}
+  ${tw`bg-custom-primaryColor md:h-20 h-14 max-w-[1300px] mx-auto   flex justify-between items-center`}
 `
 
 export const SearchContainer = styled.div`

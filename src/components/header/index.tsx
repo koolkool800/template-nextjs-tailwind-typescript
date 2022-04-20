@@ -69,11 +69,9 @@ export const Header = () => {
             <Cart className="cursor-pointer" />
             <Button>
               <User />
-              <span>Log in</span>
             </Button>
             <Button>
               <AddUser />
-              <span>Sign up</span>
             </Button>
             <Messenger className="cursor-pointer " />
             <Notify className="cursor-pointer " />
@@ -82,7 +80,7 @@ export const Header = () => {
             {ItemsNav.map((item, index) => (
               <li
                 key={index}
-                className="py-[5px]   list-none border-transparent hover:shadow-white hover:shadow-md border-2 hover:border-white  text-center text-white hover:cursor-pointer"
+                className="py-[5px]   list-none border-transparent  hover:shadow-md border-[0.25px] hover:border-white  text-center text-white hover:cursor-pointer"
               >
                 {item}
               </li>

@@ -9,7 +9,7 @@ import { SlideItems } from "../components/slideItems"
 import { Footer } from "../components/footer"
 import { Copyright } from "../components/footer/copyright"
 import { Dropdown, DropUp } from "../assets/svg/Icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Sidebar2 } from "../components/header/navbar/Sidebar2"
 
 export const Layout = styled.div`
@@ -19,7 +19,7 @@ const BackTopContainer = styled.div`
   ${tw`bg-[#276955] my-10 lg:my-0 p-[10px] opacity-[0.7]`}
 `
 const BacktTopDesc = styled.p`
-  ${tw`font-normal text-[14px] text-center text-white`}
+  ${tw`font-normal hover:opacity-70 hover:cursor-pointer text-[14px] text-center text-white`}
 `
 export const ColorLayout = styled.div`
   ${tw`bg-custom-primaryColor`}
@@ -35,6 +35,23 @@ const SlideContainer = styled.div`
 `
 export default function Home() {
   const [openIRating, setOpenIRating] = useState<boolean>(false)
+  const [isInvisible, setIsInvisible] = useState<boolean>(false)
+  useEffect(() => {
+    const scrollInvisible = () => {
+      window.pageYOffset > 100 ? setIsInvisible(true) : setIsInvisible(false)
+    }
+    window.addEventListener("scroll", scrollInvisible)
+
+    return () => {
+      window.removeEventListener("scroll", scrollInvisible)
+    }
+  }, [])
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
   return (
     <main className="overflow-x-hidden">
       <ColorLayout>
@@ -67,15 +84,26 @@ export default function Home() {
         </SlideContainer>
       </Layout>
       <BackTopContainer>
-        <BacktTopDesc>Back to top</BacktTopDesc>
+        <BacktTopDesc onClick={() => scrollToTop()}>Back to top</BacktTopDesc>
       </BackTopContainer>
-      <Layout>
-        <div className="max-w-[1300px] mx-auto">
-          <Footer />
+      {isInvisible && (
+        <div className="fixed rounded-full w-10 h-10 z-10 hover:bg-custom-primaryColor  right-0 bottom-0 ">
+          <button onClick={() => scrollToTop()}>
+            <DropUp className="w-10 h-10 hover:text-white" />
+          </button>
         </div>
-      </Layout>
-      <div className="max-w-[1300px] mx-auto">
-        <Copyright />
+      )}
+      <div className="flex flex-col">
+        <Layout>
+          <div className="max-w-[1300px] mx-auto">
+            <Footer />
+          </div>
+        </Layout>
+        <Layout>
+          <div className="max-w-[1300px] md:pb-0 pb-4 mx-auto">
+            <Copyright />
+          </div>
+        </Layout>
       </div>
     </main>
   )

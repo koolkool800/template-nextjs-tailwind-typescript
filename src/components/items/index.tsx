@@ -24,7 +24,7 @@ const ListItems: {
   {
     image:
       "https://scontent.xx.fbcdn.net/v/t1.15752-9/277887985_556064015783691_742371900506952319_n.png?_nc_cat=102&ccb=1-5&_nc_sid=aee45a&_nc_ohc=xSQuyBZaeMUAX-8ANQG&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AVK9Er5rdDSQAfY_ElTIHG7xhoZPTD2jsxiTPM8F0HLDzg&oe=627C265F",
-    title: "Marshall Major IV On-Ear Bluetooth Headphones, Brown",
+    title: "Marshall Major IV On-Ear Bluetooth Headphones, Brown ",
     soldby: "Sold by: Marshall",
     stars: 4,
     price: 142,
@@ -401,7 +401,9 @@ export const Items = () => {
   return (
     <div className="mt-4">
       <select className="p-2 border-2 mb-8 rounded-[4px] hover:cursor-pointer text-[#636363]">
-        <option value="Headphones ">Headphones</option>
+        <option className="" value="Headphones ">
+          Headphones
+        </option>
       </select>
       <Wrapper>
         {ListItems.map(
@@ -410,7 +412,9 @@ export const Items = () => {
             index
           ) => (
             <ItemContainer key={index}>
-              <Img src={image} alt="asd" />
+              <div className="aspect-w-1 relative w-full aspect-h-1 ">
+                <Img src={image} alt="asd" />
+              </div>
               <Title>{title}</Title>
               <Span1>
                 {soldby}
@@ -418,12 +422,17 @@ export const Items = () => {
                   <CheckIcon />
                 </span>
               </Span1>
-              <span className="flex gap-1">
-                <ListStars currentStars={stars} /> ( 166 )
+              <span className="flex flex-wrap gap-1">
+                <ListStars currentStars={stars} />
+                <span className="md:text-[12px] text-[10px] lg:text-[14px]">
+                  ( 166 )
+                </span>
               </span>
-              <span className="font-semibold text-[16px] relative flex gap-1">
+              <span className="font-semibold md:text-[14px] text-[12px] lg:text-[16px] relative flex gap-[2px]">
                 $ {price}
-                <span className="text-[12px] font-normal">12</span>
+                <span className="lg:text-[12px] md:text-[10px] text-[8px] font-normal">
+                  12
+                </span>
               </span>
               <Span2>{original}</Span2>
               <Span3>{certi}</Span3>

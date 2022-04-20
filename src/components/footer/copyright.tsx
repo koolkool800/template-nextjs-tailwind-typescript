@@ -3,10 +3,10 @@ import styled from "styled-components"
 import tw from "twin.macro"
 
 const Para = styled.p`
-  ${tw`text-custom-primaryColor font-normal text-[12px] md:text-[16px]`}
+  ${tw`text-custom-primaryColor font-normal text-[10px] md:text-[16px]`}
 `
 const Cotainer = styled.div`
-  ${tw`md:my-4 md:mx-4 lg:mx-0 mx-1 mt-8  flex justify-between items-center`}
+  ${tw`md:my-4 md:mx-4 lg:mx-0  mt-8  flex justify-between items-center`}
 `
 export const Copyright = () => {
   return (
